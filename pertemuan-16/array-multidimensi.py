@@ -16,3 +16,23 @@ print(f"Contoh 3 : {matrix3}")
 
 mhs = [["Arco Wirawan", 20, "Informatika"], ["Badi", 18, "Ilmu Komunikasi"]]
 print(f"Contoh 4 = {mhs}")
+
+
+# contoh 5 : Nilai siswa 
+nilai = [["K19089", "Mr. x", 80], ["K49141894", "Mr. Y", 70]]
+print(f"Contoh 5 : {nilai}")
+
+#  contoh 6 : Harga produk
+product = [["laptop", 1000000], ["Smarthphone", 200000]]
+print(f"Contoh 6 : {product}")
+
+# contoh 7 : Array 3 dimensi 
+array3d = [[[1,2], [3,4], [5,6]]]
+print(f"Contoh 7 : {array3d}")
+
+# contoh 8 : Jagged array 
+jagged = [[1,2,3], [4,5], 6]
+print(f"Contoh 8 : {jagged}")
+
+
+
