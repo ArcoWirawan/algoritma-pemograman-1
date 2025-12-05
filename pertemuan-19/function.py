@@ -35,3 +35,7 @@ print(f"Hasil kali = {result}")
 def Sapa_With_Time(name, time="Pagi"):
     print(f"Halo {name}, Selamat {time}")
     
+print()
+Sapa_With_Time("aarwannz")
+Sapa_With_Time("Budi", "Siang")
+    
