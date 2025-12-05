@@ -19,3 +19,19 @@ def Addtion(a,b):
     
 print("\n3. Fungsi dengan dua parameter")
 Addtion(7,11)
+
+# 4. Fungsi dengan return value
+def Kali(a,b):
+    return f"{a} x {b} = {a * b}"
+
+print("\n4. Fungsi dengan return value")
+print(Kali(11, 12))
+
+# ditampung dalam variabel
+result = Kali(10, 2)
+print(f"Hasil kali = {result}")
+
+# 5. Fungsi dengan parameter default
+def Sapa_With_Time(name, time="Pagi"):
+    print(f"Halo {name}, Selamat {time}")
+    
