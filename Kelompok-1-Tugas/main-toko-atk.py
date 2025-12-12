@@ -43,157 +43,166 @@ list_barang = {
 # print(list_barang.items()) # debug kode
 
 # first page and input number for category select 
-SHOW_KATEGORI = f"""
-{50*"="}
 
-SElAMAT DATANG DI TOKO {STORE_NAME}
+while True:
+    SHOW_KATEGORI = f"""
+    {50*"="}
 
-{50*"="}
+    SElAMAT DATANG DI TOKO {STORE_NAME}
 
-KATEGORI:
-1. {KATEGORI[1]}
-2. {KATEGORI[2]}
-\n
-"""
-print(SHOW_KATEGORI)
-Category_Select = int(input("Pilih kategori [1,2] : "))
+    {50*"="}
+
+    KATEGORI:
+    1. {KATEGORI[1]}
+    2. {KATEGORI[2]}
+    \n
+    """
+    print(SHOW_KATEGORI)
+    Category_Select = int(input("Pilih kategori [1,2] : "))
 
 
 
 
 
-# 2. show list_barang sesuai category
-if Category_Select in list_barang:
-    print(f"""
-{50*"="}
-       Produk - {KATEGORI[Category_Select]}               
-""")
-    
-    # ambil data dari list barang dengan key di set ke input
-    barang_toko = list_barang[Category_Select]
-    
-    start_list_num = 1
-    for kode, barang in barang_toko.items():
-        rupiah_format = f"{barang['harga']:,}".replace(',','.') # mengganti format , menjadi .
+    # 2. show list_barang sesuai category
+    if Category_Select in list_barang:
+        print(f"""
+    {50*"="}
+        Produk - {KATEGORI[Category_Select]}               
+    """)
         
-        # template output
-        print(f"{start_list_num}. {barang['nama_barang']} \t -> {rupiah_format}")
-        start_list_num += 1
+        # ambil data dari list barang dengan key di set ke input
+        barang_toko = list_barang[Category_Select]
+        
+        start_list_num = 1
+        for kode, barang in barang_toko.items():
+            rupiah_format = f"{barang['harga']:,}".replace(',','.') # mengganti format , menjadi .
+            
+            # template output
+            print(f"{start_list_num}. {barang['nama_barang']} \t -> {rupiah_format}")
+            start_list_num += 1
 
-        # # kode barang (eksperimental)
-        # print(kode)
-    print(f"{50*"="}")
-    
-else:
-    print(f"Input tidak sesuai pilihan di list!!")
-    
-### Pilih barang
-select_barang = int(input("Pilih barang [1,2,3] = "))
+            # # kode barang (eksperimental)
+            # print(kode)
+        print(f"{50*"="}")
+        
+    else:
+        print(f"Kategori tidak tersedia!!")
+        
+    ### Pilih barang
+    select_barang = int(input("Pilih barang [1,2,3] = "))
 
-# konversi kode barang menjadi list
-list_kode = list(barang_toko.keys()) 
-# sama seperti :
-# [1]['nama_barang']
-# [2]['harga']
-
-
-# menyesuaikan input client ke index
-# user access = 1
-# list access = 0
-client_number = select_barang - 1 # 
-
-if 0 <= client_number < len(list_kode):
-    # real_kode_barang : memanggil kode barang yang sudah dijadikan array
-    # item_fix : 
-    real_kode_barang = list_kode[client_number] # minta kode dulu dari sini
-    item_fix = barang_toko[real_kode_barang] # baru ambil barang
-    
-    fix_price = f"{item_fix['harga']:,}".replace(',','.') 
-    
-    print(f"\nBerhasil Memilih : {item_fix['nama_barang']}")
-    
-    print(f"Harga :  Rp. {fix_price}") # harga satuan barang
-
-    # jumlah barang
-    quantity = int(input("Jumlah Barang = "))
-    
-    # total
-    subtotal = quantity * item_fix['harga']
-    print(f"Subtotal = Rp. {subtotal:,}".replace(',','.'))
+    # konversi kode barang menjadi list
+    list_kode = list(barang_toko.keys()) 
+    # sama seperti :
+    # [1]['nama_barang']
+    # [2]['harga']
 
 
-## 2.2 OPERASI HARGA
-# total = item_fix['harga']
-# print(f'harga barang dummy = {total}')
+    # menyesuaikan input client ke index
+    # user access = 1
+    # list access = 0
+    client_number = select_barang - 1 # 
+
+    if 0 <= client_number < len(list_kode):
+        # real_kode_barang : memanggil kode barang yang sudah dijadikan array
+        # item_fix : 
+        real_kode_barang = list_kode[client_number] # minta kode dulu dari sini
+        item_fix = barang_toko[real_kode_barang] # baru ambil barang
+        
+        fix_price = f"{item_fix['harga']:,}".replace(',','.') 
+        
+        print(f"\nBerhasil Memilih : {item_fix['nama_barang']}")
+        
+        print(f"Harga :  Rp. {fix_price}") # harga satuan barang
+
+        # jumlah barang
+        quantity = int(input("Jumlah Barang = "))
+        
+        # total
+        subtotal = quantity * item_fix['harga']
+        print(f"Subtotal = Rp. {subtotal:,}".replace(',','.'))
+
+
+    ## 2.2 OPERASI HARGA
+    # total = item_fix['harga']
+    # print(f'harga barang dummy = {total}')
 
 
 
 
-# 3. Pengambilan barang 
-Pengambilan = {
-    1: {'via':'datang toko', 'biaya':0},
-    2: {'via':'Kurir', 'biaya':5000}
-}
+    # 3. Pengambilan barang 
+    Pengambilan = {
+        1: {'via':'datang toko', 'biaya':0},
+        2: {'via':'Kurir', 'biaya':5000}
+    }
 
-Display_pengambilan = f"""
-{50*"="}
-Pengambilan Barang
+    Display_pengambilan = f"""
+    {50*"="}
+    Pengambilan Barang
 
-1. {Pengambilan[1]['via']}\t => Rp.{Pengambilan[1]['biaya']:,}
-2. {Pengambilan[2]['via']}\t => Rp.{Pengambilan[2]['biaya']:,}
+    1. {Pengambilan[1]['via']}\t => Rp.{Pengambilan[1]['biaya']:,}
+    2. {Pengambilan[2]['via']}\t => Rp.{Pengambilan[2]['biaya']:,}
 
-{50*"="}
-"""
-print(Display_pengambilan)
-
-
-select_pengiriman = int(input("Mau diambil dengan [1/2] = "))
-
-biaya_pengiriman = 0
-
-if select_pengiriman == 1:
-    biaya_pengiriman = Pengambilan[1]['biaya']
-    print(f"Biaya pengiriman = {biaya_pengiriman}")
-elif select_pengiriman == 2:
-    biaya_pengiriman = Pengambilan[2]['biaya']
-    print(f"Biaya pengiriman = {biaya_pengiriman}")
-
-    
-Discount_member = 0
-    
-is_member = str(input("\nApakah anda Pelanggan tetap (y/n) = "))
-
-Discount = 10 / 100
-if is_member.lower() == 'y':
-    print(f"Selamat kamu mendapat diskon 10%")
-    Discount_member = subtotal * Discount
-    
-    # kurang_harga = subtotal - Discount_member
-    # print(int(kurang_harga))
-
-print()    
-# 4. Struk Belanja (Detail Pembelian)
+    {50*"="}
+    """
+    print(Display_pengambilan)
 
 
-detail_pembelian = f"""
-{50*"="}
-    Detail Pembelian
-{50*"="}
+    select_pengiriman = int(input("Mau diambil dengan [1/2] = "))
 
-Item                    : {item_fix['nama_barang']} x {quantity}
-Subtotal                : Rp. {subtotal:,}
-Biaya Tambahan          : Rp. {biaya_pengiriman:,}
-Diskon Pelanggan (10%)  : Rp. {Discount_member:,}
+    biaya_pengiriman = 0
 
-{50*"-"}
+    if select_pengiriman == 1:
+        biaya_pengiriman = Pengambilan[1]['biaya']
+        print(f"Biaya pengiriman = {biaya_pengiriman}")
+    elif select_pengiriman == 2:
+        biaya_pengiriman = Pengambilan[2]['biaya']
+        print(f"Biaya pengiriman = {biaya_pengiriman}")
+    else:
+        exit("Tidak ada pilihan yang sesuai!!")
 
-Total Bayar : {(subtotal + biaya_pengiriman) - Discount_member}
-"""
+        
+    Discount_member = 0
+        
+    is_member = str(input("\nApakah anda Pelanggan tetap (y/n) = "))
 
-print(detail_pembelian)
+    Discount = 10 / 100
+    if is_member.lower() == 'y':
+        print(f"Selamat kamu mendapat diskon 10%")
+        Discount_member = int(subtotal * Discount)
+        
+        # kurang_harga = subtotal - Discount_member
+        # print(int(kurang_harga))
 
+    print()    
+    # 4. Struk Belanja (Detail Pembelian)
 
-# if select_barang in Pengambilan[select_pengiriman]:
     
 
+    detail_pembelian = f"""
+    {50*"="}
+        Detail Pembelian
+    {50*"="}
 
+    Item                    : {item_fix['nama_barang']} x {quantity}
+    Subtotal                : Rp. {subtotal:,}
+    Biaya Tambahan          : Rp. {biaya_pengiriman:,}
+    Diskon Pelanggan (10%)  : Rp. {Discount_member:,}
+
+    {50*"-"}
+
+    Total Bayar : {(subtotal + biaya_pengiriman) - Discount_member}
+    """
+
+    print(detail_pembelian)
+
+    is_clear = str(input("Belanja Lagi apa tidak [y/n]"))
+    if is_clear == "n":
+        exit("Terima Kasih telah berbelanja di toko kami")
+    elif is_clear != "y":
+        exit("Input salah, auto keluar!!")
+    # if select_barang in Pengambilan[select_pengiriman]:
+        
+    break
+print("Selesai")
